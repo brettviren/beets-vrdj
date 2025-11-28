@@ -131,18 +131,22 @@ class VGGishPlugin(BeetsPlugin):
         
         # Register the import hook if 'auto' is enabled
         if self.config['auto'].get(bool):
-            self.register_listener('item_imported', self.process_item_embedding)
-            self.register_listener('album_imported', self.process_album_embedding)
+            self.register_listener('item_imported', self.process_embedding)
+            self.register_listener('album_imported', self.process_embedding)
             # self._log.info(f"Automatic VGGish embedding generation enabled.")
 
     # --- Event Hook (Automatic Import) ---
-    
-    def process_album_embedding(self, lib, album):
-        """Loops over an album, finding item embeddings"""
-        for item in album.items():
-            self.process_item_embedding(lib, item)
 
-    def process_item_embedding(self, lib, item):
+
+    def process_embedding(lib, item=None, album=None):
+        if item is not None:
+            self.process_embedding(lib, item)
+        if album is not None:
+            for item in album.items():
+                self.process_embedding(lib, item)
+
+    def process_item_embedding(self, item):
+
         """Calculates and stores the VGGish embedding for a single item."""
         
         if not self.config['force'].get(bool) and item.get(self.EMBEDDING_FIELD):

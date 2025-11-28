@@ -244,11 +244,6 @@ class FaissPlugin(BeetsPlugin):
         return True
 
 
-    def _index_item_vectors(self, lib, item):
-        return self._index_album_vectors(lib, [item])
-    def _index_album_vectors(self, lib, album):
-        return self._index_album_vectors(lib, album.items())
-
     def _index_vectors(self, lib, item=None, album=None):
         """Listener hook for 'database_change' event (Auto-indexing)."""
         items = list()
