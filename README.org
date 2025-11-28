@@ -10,7 +10,23 @@ Besides commands matching these plugin names the =faiss= plug provides the comma
 
 - vrdj :: virtual radio DJ takes a beets query, aggregates the vectors from its items to form a faiss query and then produces a list of songs that are most "similar".
 
-tbd:
+* Basic usage
+
+#+begin_example
+beet vggish <query> # make embeddings for songs in query
+beet faiss <query>  # explicitly insert vectorized embeddings
+beet vrdj <query>   # makes .m3u file in current dir
+#+end_example
+
+Calculating VGGish embeddings is a bit slow, about 5s per song.  You can use GPU
+for some speed up of less than 2x (GTX 1650 vs i7-9750H).  GPU needs about 3GB
+VRAM.  Rerunning will not remake =vggish= embeddings unless forced to.  faiss and
+vrdj are both relatively fast and both require =vggish= attributes to exist.  vrdj
+will run faiss on the fly if needed.
+
+
+
+* TBD:
 - [ ] combine the two plugins into one, more hassle than benefit keeping them separate.
 - [ ] improve output of vrdj to write m3u on request, provide file name.
 - [ ] improve output of vrdj so it works like =beet ls=, if possible?
