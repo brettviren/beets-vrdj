@@ -10,4 +10,12 @@ Besides commands matching these plugin names the =faiss= plug provides the comma
 
 - vrdj :: virtual radio DJ takes a beets query, aggregates the vectors from its items to form a faiss query and then produces a list of songs that are most "similar".
 
-  
+tbd:
+- [ ] improve output of vrdj to write m3u on request, provide file name.
+- [ ] improve output of vrdj so it works like =beet ls=, if possible?
+- [ ] install story
+- [ ] usage examples
+- [ ] alternative vectorize (vector distance instead of cosine?)
+- [ ] alternative embeddings (openl3?)
+- [ ] move beets ID <--> faiss ID map from JSON sidecar to FAISS db and into beets DB
+

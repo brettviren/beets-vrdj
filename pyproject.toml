@@ -10,7 +10,7 @@ requires-python = ">=3.12"
 dependencies = [
     "beets>=2.5.1",
     "faiss-cpu>=1.13.0",
-    "librosa>=0.11.0",
+    "librosa",
     "numpy>=2.3.5",
     "soundfile>=0.13.1",
     "torch>=2.9.1",
