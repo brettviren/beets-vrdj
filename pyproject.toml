@@ -1,0 +1,27 @@
+[project]
+name = "beets-vrdj"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Brett Viren", email = "brett.viren@gmail.com" }
+]
+requires-python = ">=3.12"
+dependencies = [
+    "beets>=2.5.1",
+    "faiss-cpu>=1.13.0",
+    "librosa>=0.11.0",
+    "numpy>=2.3.5",
+    "soundfile>=0.13.1",
+    "torch>=2.9.1",
+    "torchvggish>=0.2",
+]
+
+[tool.setuptools.packages.find]
+where = ["src"] 
+
+
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+    
