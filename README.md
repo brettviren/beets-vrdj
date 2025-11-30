@@ -1,31 +1,5 @@
-The beets-vrdj package provides two plugins, currently named after the technology they use:
+This was a quick and dirty prototype leaning heavy on Gemini.
 
--   **`vggish`:** calculate and store VGGish embeddings for songs
--   **`faiss`:** process embeddings and store and query them in an FAISS vector db
-
-Besides commands matching these plugin names the `faiss` plug provides the command
-
--   **vrdj:** virtual radio DJ takes a beets query, aggregates the vectors from its items to form a faiss query and then produces a list of songs that are most "similar".
+For a more hand crafted version, see https://github.com/brettviren/vrdj
 
 
-# Basic usage
-
-```
-beet vggish <query> # make embeddings for songs in query
-beet faiss <query>  # explicitly insert vectorized embeddings
-beet vrdj <query>   # makes .m3u file in current dir
-```
-
-Calculating VGGish embeddings is a bit slow, about 5s per song. You can use GPU for some speed up of less than 2x (GTX 1650 vs i7-9750H). GPU needs about 3GB VRAM. Rerunning will not remake `vggish` embeddings unless forced to. faiss and vrdj are both relatively fast and both require `vggish` attributes to exist. vrdj will run faiss on the fly if needed.
-
-
-# TBD:
-
--   [ ] combine the two plugins into one, more hassle than benefit keeping them separate.
--   [ ] improve output of vrdj to write m3u on request, provide file name.
--   [ ] improve output of vrdj so it works like `beet ls`, if possible?
--   [ ] install story
--   [ ] usage examples
--   [ ] alternative vectorize (vector distance instead of cosine?)
--   [ ] alternative embeddings (openl3?)
--   [ ] move beets ID <&ndash;> faiss ID map from JSON sidecar to FAISS db and into beets DB
